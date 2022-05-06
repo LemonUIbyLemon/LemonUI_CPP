@@ -5,7 +5,7 @@ namespace LemonUI
 	/// <summary>
 	/// The alignment of the element to draw.
 	/// </summary>
-	enum Alignment
+	enum class Alignment
 	{
 		/// <summary>
 		/// Aligns the element to the Center.

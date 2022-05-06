@@ -11,6 +11,7 @@ static void scriptKeyboardHandler(DWORD key, WORD repeats, BYTE scanCode, BOOL i
     {
         if (key == VK_F3)
         {
+            _pGame->DeleteCreateScaledText();
         }
     }
 }
@@ -21,7 +22,7 @@ static void scriptMainFunc()
     {
         WAIT(0);
     }
-    srand(GetTickCount64());
+    srand(GetTickCount());
 
     _pGame = new Example();
 
@@ -29,6 +30,7 @@ static void scriptMainFunc()
 
     while (true)
     {
+        _pGame->RenderScaledText();
         WAIT(0);
     }
 }
