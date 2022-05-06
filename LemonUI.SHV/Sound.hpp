@@ -6,16 +6,17 @@ namespace LemonUI
 	class Sound
 	{
 	private:
-		std::string set;
-		std::string file;
+		char* m_name = nullptr;
+		char* m_ref = nullptr;
 
 	public:
-		Sound(std::string set, std::string file);
+		Sound(const char* name, const char* ref);
+		Sound(const std::string& name, const std::string& ref);
 
-		std::string GetSet();
-		void SetSet(std::string);
-		std::string GetFile();
-		void SetFile(std::string);
+		std::string GetName() const;
+		void SetName(const std::string& name);
+		std::string GetRef() const;
+		void SetRef(const std::string& ref);
 
 		void PlayFrontend();
 	};

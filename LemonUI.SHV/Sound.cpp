@@ -1,39 +1,37 @@
-#include <natives.hpp>
-#include <string>
+#include "pch.h"
+
 #include "Sound.hpp"
 
 namespace LemonUI
 {
-	Sound::Sound(std::string set, std::string file)
+	Sound::Sound(const char* name, const char* ref) : m_name{ const_cast<char*>(name) }, m_ref{ const_cast<char*>(ref) }
+	{}
+	Sound::Sound(const std::string& name, const std::string& ref) : m_name{ const_cast<char*>(name.c_str()) }, m_ref{ const_cast<char*>(ref.c_str()) }
+	{}
+
+	std::string Sound::GetName() const
 	{
-		this->set = set;
-		this->file = file;
+		return this->m_name;
 	}
 
-	std::string Sound::GetSet()
+	void Sound::SetName(const std::string& name)
 	{
-		return this->set;
+		this->m_name = const_cast<char*>(name.c_str());
 	}
 
-	void Sound::SetSet(std::string set)
+	std::string Sound::GetRef() const
 	{
-		this->set = set;
+		return this->m_ref;
 	}
 
-	std::string Sound::GetFile()
+	void Sound::SetRef(const std::string& ref)
 	{
-		return this->file;
-	}
-
-	void Sound::SetFile(std::string file)
-	{
-		this->file = file;
+		this->m_ref = const_cast<char*>(ref.c_str());
 	}
 
 	void Sound::PlayFrontend()
 	{
-		AUDIO::PLAY_SOUND_FRONTEND(-1, file.c_str(), set.c_str(), false);
-		int id = AUDIO::GET_SOUND_ID();
-		AUDIO::RELEASE_SOUND_ID(id);
+		AUDIO::PLAY_SOUND_FRONTEND(-1, this->m_name, this->m_ref, FALSE);
+		AUDIO::RELEASE_SOUND_ID(AUDIO::GET_SOUND_ID());
 	}
 }
