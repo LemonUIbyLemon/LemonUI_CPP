@@ -3,6 +3,7 @@
 #include <Helpers.hpp>
 #include <ScaledText.hpp>
 #include <Scaleform.hpp>
+#include <NativeMenu.hpp>
 
 #include <string>
 
@@ -11,10 +12,25 @@ class Example
 private:
 	LemonUI::ScaledText* m_scaledText = nullptr;
 	LemonUI::Scaleform m_scaleform{ "mp_mm_card_freemode", { 0.122f, 0.3f }, { 0.28f, 0.6f } };
+    LemonUI::NativeMenu m_menu{};
 
 	bool m_scaleformFocus = false;
 
 public:
+    void InitMenu()
+    {
+        LemonUI::Vec2 currentRes = LemonUI::GetScreenResolution();
+        this->m_menu.SetPosition({ currentRes.x / 2, currentRes.y / 2 });
+        this->m_menu.AddItem("The first item");
+        this->m_menu.AddItem("The second item");
+        this->m_menu.AddItem("The last item");
+        this->m_menu.AddItem("Go back");
+    }
+    void RenderMenu()
+    {
+        this->m_menu.Render();
+    }
+
 	void RenderScaledText()
 	{
 		if (this->m_scaledText == nullptr)

@@ -29,6 +29,7 @@ static void scriptMainFunc()
     srand(GetTickCount());
 
     _pGame = new Example();
+    _pGame->InitMenu();
 
     LemonUI::ShowNotify("Welcome to ~y~LemonUI.SHV");
     LemonUI::ShowNotify("Use F3 to show/hide ScaledText and F4 to show/hide Scaleform");
@@ -37,6 +38,7 @@ static void scriptMainFunc()
     {
         _pGame->RenderScaledText();
         _pGame->RenderScaleform();
+        _pGame->RenderMenu();
 
         WAIT(0);
     }

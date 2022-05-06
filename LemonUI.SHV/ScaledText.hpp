@@ -16,11 +16,11 @@ namespace LemonUI
 		ScaledText() = default;
 
 		void SetPos(const Vec2& pos) { this->m_pos = pos; }
-		void SetText(const std::string& text) { this->m_text = const_cast<char*>(text.c_str()); }
+		void SetText(const std::string& text) { this->m_text = text; }
 		void SetAlign(const Alignment& align) { this->m_align = align; }
 		void SetScale(const float& scale) { this->m_scale = scale; }
 		void SetColor(const Vec4& color) { this->m_color = color; }
-		void SetFont(const Font& font) { this->m_font = static_cast<int>(font); }
+		void SetFont(const Font& font) { this->m_font = (int)font; }
 		void SetDropShadow(const bool& value) { this->m_dropShadow = value; }
 		void SetOutline(const bool& value) { this->m_outline = value; }
 		void SetWrapping(const bool& value, const Vec2& size) { this->m_wrapping = value; this->m_wrapSize = size; }
@@ -29,7 +29,7 @@ namespace LemonUI
 
 	private:
 		Vec2 m_pos = GetScreenResolution();
-		std::string m_text = NULL;
+		std::string m_text = "";
 
 		int m_font = 0;
 		Vec4 m_color{};
