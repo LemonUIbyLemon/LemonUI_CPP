@@ -3,8 +3,6 @@
 
 #include "Helpers.hpp"
 
-#include <natives.hpp>
-
 namespace LemonUI
 {
 	Scaleform::Scaleform(const std::string& name, const Vec2& pos, const Vec2& size)

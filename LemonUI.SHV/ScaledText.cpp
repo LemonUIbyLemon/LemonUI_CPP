@@ -3,8 +3,6 @@
 
 #include "Helpers.hpp"
 
-#include <natives.hpp>
-
 namespace LemonUI
 {
 	ScaledText::ScaledText(const std::string& text) : m_text{ text.c_str() }

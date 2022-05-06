@@ -1,8 +1,6 @@
 #include "pch.h"
 #include "Helpers.hpp"
 
-#include <natives.hpp>
-
 namespace LemonUI
 {
 	void ShowNotify(const std::string& message)

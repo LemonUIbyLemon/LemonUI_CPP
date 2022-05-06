@@ -1,8 +1,6 @@
 #include "pch.h"
 #include "Sound.hpp"
 
-#include <natives.hpp>
-
 namespace LemonUI
 {
 	Sound::Sound(std::string set, std::string file) : set{set}, file{file}
