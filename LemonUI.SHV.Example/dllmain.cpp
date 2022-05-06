@@ -1,7 +1,7 @@
 #include "pch.h"
 #include "Example.hpp"
 
-#include <Sound.hpp>
+#include <Helpers.hpp>
 
 #include <natives.hpp>
 
@@ -11,8 +11,6 @@ static void scriptKeyboardHandler(DWORD key, WORD repeats, BYTE scanCode, BOOL i
     {
         if (key == VK_F3)
         {
-            LemonUI::Sound sound{ "NAV_UP_DOWN", "HUD_FRONTEND_DEFAULT_SOUNDSET" };
-            sound.PlayFrontend();
         }
     }
 }
@@ -23,13 +21,11 @@ static void scriptMainFunc()
     {
         WAIT(0);
     }
-    srand(GetTickCount());
+    srand(GetTickCount64());
 
     _pGame = new Example();
 
-    HUD::BEGIN_TEXT_COMMAND_THEFEED_POST("STRING");
-    HUD::ADD_TEXT_COMPONENT_SUBSTRING_PLAYER_NAME("Welcome to ~y~LemonUI.SHV");
-    HUD::END_TEXT_COMMAND_THEFEED_POST_TICKER(FALSE, FALSE);
+    LemonUI::ShowNotify("Welcome to ~y~LemonUI.SHV");
 
     while (true)
     {
