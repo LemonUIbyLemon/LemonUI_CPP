@@ -2,11 +2,17 @@
 
 #include <Helpers.hpp>
 #include <ScaledText.hpp>
+#include <Scaleform.hpp>
+
+#include <string>
 
 class Example
 {
 private:
 	LemonUI::ScaledText* m_scaledText = nullptr;
+	LemonUI::Scaleform m_scaleform{ "mp_mm_card_freemode", { 0.122f, 0.3f }, { 0.28f, 0.6f } };
+
+	bool m_scaleformFocus = false;
 
 public:
 	void RenderScaledText()
@@ -34,6 +40,47 @@ public:
 			this->m_scaledText = nullptr;
 		}
 	}
+
+    void RenderScaleform()
+    {
+        if (!this->m_scaleformFocus)
+        {
+            return;
+        }
+
+        this->m_scaleform.StartFunction("SET_DATA_SLOT_EMPTY");
+        this->m_scaleform.PushParam(0);
+        this->m_scaleform.FinishFunction();
+
+        this->m_scaleform.StartFunction("SET_DATA_SLOT");
+        this->m_scaleform.PushParam(0);
+        this->m_scaleform.PushParam(std::string("16ms"));
+        this->m_scaleform.PushParam(std::string("EntenKoeniq"));
+        this->m_scaleform.PushParam(116);
+        this->m_scaleform.PushParam(0);
+        this->m_scaleform.PushParam(0);
+        this->m_scaleform.PushParam(std::string(""));
+        this->m_scaleform.PushParam(std::string(""));
+        this->m_scaleform.PushParam(2);
+        this->m_scaleform.PushParam(std::string(""));
+        this->m_scaleform.PushParam(std::string(""));
+        this->m_scaleform.PushParam(std::string(" "));
+        this->m_scaleform.FinishFunction();
+
+        this->m_scaleform.StartFunction("SET_TITLE");
+        this->m_scaleform.PushParam(std::string("Player list"));
+        this->m_scaleform.PushParam(std::string("1 players"));
+        this->m_scaleform.FinishFunction();
+
+        this->m_scaleform.CallFunction("DISPLAY_VIEW");
+
+        this->m_scaleform.Draw();
+    }
+
+    void FocusScaleform()
+    {
+        this->m_scaleformFocus = !this->m_scaleformFocus;
+    }
 };
 
 extern Example* _pGame = nullptr;

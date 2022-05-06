@@ -7,12 +7,10 @@
 
 namespace LemonUI
 {
-	ScaledText::ScaledText(const char* text) : m_text{ text }
-	{}
 	ScaledText::ScaledText(const std::string& text) : m_text{ text.c_str() }
 	{}
 
-	void ScaledText::Draw()
+	void ScaledText::Draw() const
 	{
 		if (this->m_text.empty())
 		{

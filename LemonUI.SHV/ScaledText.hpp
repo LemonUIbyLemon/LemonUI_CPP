@@ -12,12 +12,10 @@ namespace LemonUI
 	class ScaledText : public IDrawable
 	{
 	public:
-		ScaledText(const char* text);
 		ScaledText(const std::string& text);
 		ScaledText() = default;
 
 		void SetPos(const Vec2& pos) { this->m_pos = pos; }
-		void SetText(const char* text) { this->m_text = const_cast<char*>(text); }
 		void SetText(const std::string& text) { this->m_text = const_cast<char*>(text.c_str()); }
 		void SetAlign(const Alignment& align) { this->m_align = align; }
 		void SetScale(const float& scale) { this->m_scale = scale; }
@@ -27,7 +25,7 @@ namespace LemonUI
 		void SetOutline(const bool& value) { this->m_outline = value; }
 		void SetWrapping(const bool& value, const Vec2& size) { this->m_wrapping = value; this->m_wrapSize = size; }
 
-		void Draw() override;
+		void Draw() const override;
 
 	private:
 		Vec2 m_pos = GetScreenResolution();

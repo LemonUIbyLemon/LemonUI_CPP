@@ -13,6 +13,10 @@ static void scriptKeyboardHandler(DWORD key, WORD repeats, BYTE scanCode, BOOL i
         {
             _pGame->DeleteCreateScaledText();
         }
+        else if (key == VK_F4)
+        {
+            _pGame->FocusScaleform();
+        }
     }
 }
 
@@ -27,10 +31,13 @@ static void scriptMainFunc()
     _pGame = new Example();
 
     LemonUI::ShowNotify("Welcome to ~y~LemonUI.SHV");
+    LemonUI::ShowNotify("Use F3 to show/hide ScaledText and F4 to show/hide Scaleform");
 
     while (true)
     {
         _pGame->RenderScaledText();
+        _pGame->RenderScaleform();
+
         WAIT(0);
     }
 }
