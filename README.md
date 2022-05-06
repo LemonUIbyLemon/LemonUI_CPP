@@ -13,7 +13,8 @@ You don't need to install the C++ version of LemonUI.
 
 ## Usage
 
-If you are a developer, check the different header files depending on what you plan to use. They should be 1:1 to the .NET implementation.
+* For developers: Check the different header files depending on what you plan to use. They should be 1:1 to the .NET implementation.
+* For contributors: Make sure that your PowerShell Execution Policy is set to RemoteSigned or lower (`Set-ExecutionPolicy RemoteSigned`)
 
 [appveyor-img]: https://img.shields.io/appveyor/build/justalemon/lemonui-cpp?label=appveyor
 [appveyor-url]: https://ci.appveyor.com/project/justalemon/lemonui-cpp
