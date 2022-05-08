@@ -55,3 +55,8 @@ bld/
 *.exe
 *.out
 *.app
+
+# Custom
+**/*.vcxproj*
+**/*.sln
+!build/*

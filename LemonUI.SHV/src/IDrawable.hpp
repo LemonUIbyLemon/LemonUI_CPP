@@ -11,6 +11,6 @@ namespace LemonUI
 		/// <summary>
 		/// Draws the item on the screen.
 		/// </summary>
-		virtual void Draw() = 0;
+		virtual void Draw() const = 0;
 	};
 }
