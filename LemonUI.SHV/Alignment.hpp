@@ -5,7 +5,7 @@ namespace LemonUI
 	/// <summary>
 	/// The alignment of the element to draw.
 	/// </summary>
-	enum class Alignment
+	enum class Alignment : UINT8
 	{
 		/// <summary>
 		/// Aligns the element to the Center.
@@ -18,6 +18,6 @@ namespace LemonUI
 		/// <summary>
 		/// Aligns the element to the RIght.
 		/// </summary>
-		Right = 2,
+		Right = 2
 	};
 }

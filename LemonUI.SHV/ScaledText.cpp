@@ -15,45 +15,53 @@ namespace LemonUI
 			return;
 		}
 
+		Vec2 relativePos{};
+		ToRelative(this->m_pos.x, this->m_pos.y, &relativePos.x, &relativePos.y);
+
 		HUD::SET_TEXT_FONT(this->m_font);
 		HUD::SET_TEXT_SCALE(1.0f, this->m_scale);
-		HUD::SET_TEXT_COLOUR((int)(this->m_color.r * 255.0f), (int)(this->m_color.g * 255.0f), (int)(this->m_color.b * 255.0f), (int)(this->m_color.a * 255.0f));
+		HUD::SET_TEXT_COLOUR((int)m_color.r, (int)m_color.g, (int)m_color.b, (int)m_color.a);
 		if (this->m_wrapping)
 		{
-			HUD::SET_TEXT_WRAP(this->m_pos.x, this->m_pos.x + this->m_wrapSize.x);
+			switch (this->m_align)
+			{
+			case Alignment::Left:
+				HUD::SET_TEXT_WRAP(relativePos.x, relativePos.x + this->m_wrapSize.x);
+				break;
+			case Alignment::Center:
+				HUD::SET_TEXT_WRAP(relativePos.x - (this->m_wrapSize.x * 0.5f), relativePos.x + (this->m_wrapSize.x * 0.5f));
+				break;
+			case Alignment::Right:
+				HUD::SET_TEXT_WRAP(relativePos.x - this->m_wrapSize.x, relativePos.x);
+				break;
+			}
 		}
-		else
+		else if (this->m_align == Alignment::Right)
 		{
-			HUD::SET_TEXT_WRAP(0.0, 1.0);
+			HUD::SET_TEXT_WRAP(0.0f, relativePos.x);
 		}
-		if (this->m_align == Alignment::Center)
-		{
-			HUD::SET_TEXT_CENTRE(1);
-		}
-		else
-		{
-			HUD::SET_TEXT_CENTRE(0);
-			HUD::SET_TEXT_RIGHT_JUSTIFY(1);
-		}
+		HUD::SET_TEXT_JUSTIFICATION((int)this->m_align);
+
 		if (this->m_dropShadow)
 		{
 			HUD::SET_TEXT_DROP_SHADOW();
 		}
-		else
-		{
-			HUD::SET_TEXT_DROPSHADOW(0, 0, 0, 0, 0);
-		}
+		
 		if (this->m_outline)
 		{
 			HUD::SET_TEXT_OUTLINE();
 		}
 
-		HUD::SET_TEXT_EDGE(1, 0, 0, 0, 205);
 		HUD::BEGIN_TEXT_COMMAND_DISPLAY_TEXT("STRING");
 		HUD::ADD_TEXT_COMPONENT_SUBSTRING_PLAYER_NAME(this->m_text.c_str());
 
-		Vec2 relativePos{};
-		ToRelative(this->m_pos.x, this->m_pos.y, &relativePos.x, &relativePos.y);
 		HUD::END_TEXT_COMMAND_DISPLAY_TEXT(relativePos.x, relativePos.y, 0); // 0 correct?
+
+		// TODO
+		if (this->m_background)
+		{
+			float textLength = (float)this->m_text.size() / 100;
+			GRAPHICS::DRAW_RECT(relativePos.x, relativePos.y, textLength, 0.056f, (int)m_bgColor.r, (int)m_bgColor.g, (int)m_bgColor.b, (int)m_bgColor.a, 0);
+		}
 	}
 }

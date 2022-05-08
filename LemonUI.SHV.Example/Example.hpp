@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Helpers.hpp>
+#include <Alignment.hpp>
 #include <ScaledText.hpp>
 #include <Scaleform.hpp>
 #include <NativeMenu.hpp>
@@ -37,9 +38,9 @@ public:
 		{
 			return;
 		}
-		LemonUI::Vec2 currentRes = LemonUI::GetScreenResolution();
-		this->m_scaledText->SetPos({ currentRes.x / 2, currentRes.y - 60 });
-		this->m_scaledText->Draw();
+        LemonUI::Vec2 currentRes = LemonUI::GetScreenResolution();
+        this->m_scaledText->SetPos({ currentRes.x / 2, currentRes.y - 60 });
+        this->m_scaledText->Draw();
 	}
 
 	void DeleteCreateScaledText()
@@ -48,6 +49,8 @@ public:
 		{
 			this->m_scaledText = new LemonUI::ScaledText{ "Created with LemonUI.SHV by EntenKoeniq" };
 			this->m_scaledText->SetScale(0.35f);
+            this->m_scaledText->SetAlign(LemonUI::Alignment::Center);
+            this->m_scaledText->SetColor({ 255.0f, 187.0f, 0.0f, 255.0f });
 			this->m_scaledText->SetDropShadow(true);
 		}
 		else

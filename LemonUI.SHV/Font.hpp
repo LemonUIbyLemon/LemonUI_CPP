@@ -5,7 +5,7 @@ namespace LemonUI
 	/// <summary>
 	/// An enum representing the fonts available in game.
 	/// </summary>
-	enum class Font : unsigned char /* uint8_t */
+	enum class Font : UINT8
 	{
 		ChaletLondon = 0,
 		HouseScript = 1,
