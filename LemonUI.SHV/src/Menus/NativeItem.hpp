@@ -1,7 +1,7 @@
 #pragma once
 #include "NativeMenu.hpp"
-#include "ScaledText.hpp"
-#include "Texture.hpp"
+#include "Elements/ScaledText.hpp"
+#include "Elements/Texture.hpp"
 
 namespace LemonUI
 {

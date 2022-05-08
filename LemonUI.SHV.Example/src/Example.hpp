@@ -1,10 +1,10 @@
 #pragma once
 
 #include <Helpers.hpp>
-#include <Alignment.hpp>
-#include <ScaledText.hpp>
-#include <Scaleform.hpp>
-#include <NativeMenu.hpp>
+#include <Elements/Alignment.hpp>
+#include <Elements/ScaledText.hpp>
+#include <Scaleform/Scaleform.hpp>
+#include <Menus/NativeMenu.hpp>
 
 #include <string>
 

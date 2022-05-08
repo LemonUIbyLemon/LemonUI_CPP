@@ -1,5 +1,5 @@
 #pragma once
-#include "IScaleform.hpp"
+#include "Scaleform/IScaleform.hpp"
 #include "Vectors.hpp"
 
 #include <string>

@@ -1,8 +1,7 @@
-#include "pch.h"
+#include "pch.hpp"
 #include "NativeItem.hpp"
-
-#include "Font.hpp"
-#include "Alignment.hpp"
+#include "Elements/Font.hpp"
+#include "Elements/Alignment.hpp"
 
 namespace LemonUI
 {

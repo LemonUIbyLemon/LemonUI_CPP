@@ -1,7 +1,7 @@
 #pragma once
 #include "Vectors.hpp"
-#include "ScaledText.hpp"
-#include "Texture.hpp"
+#include "Elements/ScaledText.hpp"
+#include "Elements/Texture.hpp"
 #include "NativeItem.hpp"
 
 #include <string>

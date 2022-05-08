@@ -1,4 +1,4 @@
-#include "pch.h"
+#include "pch.hpp"
 #include "Sound.hpp"
 
 namespace LemonUI

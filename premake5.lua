@@ -26,13 +26,13 @@ project "LemonUI.SHV"
     kind "StaticLib"
     language "C++"
     cppdialect "C++17"
-    staticruntime "off"
+    staticruntime "on"
 
     targetdir("bin/%{cfg.buildcfg}/%{prj.name}")
     objdir("bin-int/%{cfg.buildcfg}/%{prj.name}")
 
-    pchheader "pch.h"
-    pchsource "LemonUI.SHV/pch.cpp"
+    pchheader "pch.hpp"
+    pchsource "%{prj.name}/src/pch.cpp"
 
     prebuildcommands
     {
@@ -41,15 +41,16 @@ project "LemonUI.SHV"
 
     files
     {
-        "LemonUI.SHV/**.hpp",
-        "LemonUI.SHV/**.cpp"
+        "LemonUI.SHV/src/**.hpp",
+        "LemonUI.SHV/src/**.cpp"
     }
 
     includedirs
     {
         "%{IncludeDir.scripthookv}",
         "%{IncludeDir.natives}",
-        "%{IncludeDir.ikt}"
+        "%{IncludeDir.ikt}",
+        "LemonUI.SHV/src"
     }
 
     libdirs
@@ -62,6 +63,11 @@ project "LemonUI.SHV"
         "ScriptHookV"
     }
 
+    defines
+    {
+        "_CRT_SECURE_NO_WARNINGS"
+    }
+
     filter "system:windows"
         systemversion "latest"
     
@@ -76,7 +82,7 @@ project "LemonUI.SHV"
 
     filter "configurations:Release"
         runtime "Release"
-        symbols "off"
+        optimize "on"
 
 project "LemonUI.SHV.Example"
     location "LemonUI.SHV.Example"
@@ -84,18 +90,18 @@ project "LemonUI.SHV.Example"
     targetextension ".asi"
     language "C++"
     cppdialect "C++17"
-    staticruntime "off"
+    staticruntime "on"
 
     targetdir("bin/%{cfg.buildcfg}/%{prj.name}")
     objdir("bin-int/%{cfg.buildcfg}/%{prj.name}")
 
-    pchheader "pch.h"
-    pchsource "LemonUI.SHV.Example/pch.cpp"
+    pchheader "pch.hpp"
+    pchsource "%{prj.name}/src/pch.cpp"
 
     files
     {
-        "LemonUI.SHV.Example/**.hpp",
-        "LemonUI.SHV.Example/**.cpp"
+        "%{prj.name}/src/**.hpp",
+        "%{prj.name}/src/**.cpp"
     }
 
     includedirs
@@ -103,7 +109,8 @@ project "LemonUI.SHV.Example"
         "%{IncludeDir.scripthookv}",
         "%{IncludeDir.natives}",
         "%{IncludeDir.ikt}",
-        "%{IncludeDir.lemonui}"
+        "%{IncludeDir.lemonui}",
+        "LemonUI.SHV/src"
     }
 
     libdirs
@@ -114,8 +121,8 @@ project "LemonUI.SHV.Example"
 
     links
     {
-        "ScriptHookV.lib",
-        "LemonUI.SHV.lib"
+        "ScriptHookV",
+        "LemonUI.SHV"
     }
 
     filter "system:windows"
@@ -132,4 +139,4 @@ project "LemonUI.SHV.Example"
 
     filter "configurations:Release"
         runtime "Release"
-        symbols "off"
+        optimize "on"

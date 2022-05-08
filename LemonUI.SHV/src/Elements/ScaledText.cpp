@@ -1,6 +1,5 @@
-#include "pch.h"
+#include "pch.hpp"
 #include "ScaledText.hpp"
-
 #include "Helpers.hpp"
 
 namespace LemonUI
@@ -61,7 +60,7 @@ namespace LemonUI
 		if (this->m_background)
 		{
 			float textLength = (float)this->m_text.size() / 100;
-			GRAPHICS::DRAW_RECT(relativePos.x, relativePos.y, textLength, 0.056f, (int)m_bgColor.r, (int)m_bgColor.g, (int)m_bgColor.b, (int)m_bgColor.a, 0);
+			GRAPHICS::DRAW_RECT(relativePos.x, relativePos.y, textLength, 0.037f, (int)m_bgColor.r, (int)m_bgColor.g, (int)m_bgColor.b, (int)m_bgColor.a, 0);
 		}
 	}
 }

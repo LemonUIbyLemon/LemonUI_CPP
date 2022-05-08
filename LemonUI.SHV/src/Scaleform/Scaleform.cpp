@@ -1,6 +1,5 @@
-#include "pch.h"
+#include "pch.hpp"
 #include "Scaleform.hpp"
-
 #include "Helpers.hpp"
 
 namespace LemonUI

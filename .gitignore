@@ -57,6 +57,6 @@ bld/
 *.app
 
 # Custom
-**/*.vcxproj
+**/*.vcxproj*
 **/*.sln
 !build/*
