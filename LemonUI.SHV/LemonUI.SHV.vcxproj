@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="PointF.cpp" />
+    <ClCompile Include="SizeF.cpp" />
     <ClCompile Include="Sound.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -19,6 +20,7 @@
     <ClInclude Include="IDrawable.hpp" />
     <ClInclude Include="IRecalculable.hpp" />
     <ClInclude Include="PointF.hpp" />
+    <ClInclude Include="SizeF.hpp" />
     <ClInclude Include="Sound.hpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
