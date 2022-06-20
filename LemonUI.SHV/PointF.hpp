@@ -14,5 +14,7 @@ namespace LemonUI
         float GetY() const;
         void SetX(float x);
         void SetY(float y);
+        PointF ToRelative() const;
+        PointF ToAbsolute() const;
     };
 }
