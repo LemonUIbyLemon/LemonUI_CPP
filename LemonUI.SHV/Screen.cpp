@@ -5,14 +5,14 @@
 #include "Control.hpp"
 #include "SizeF.hpp"
 
-namespace LemonUI::Screen
+namespace LemonUI
 {
-	float GetAspectRatio()
+	float Screen::GetAspectRatio()
 	{
 		return GRAPHICS::GET_ASPECT_RATIO_(false);
 	}
 
-	PointF GetCursorPositionRelative()
+	PointF Screen::GetCursorPositionRelative()
 	{
 		float cursorX = PAD::GET_CONTROL_NORMAL(0, Control::CursorX);
 		float cursorY = PAD::GET_CONTROL_NORMAL(0, Control::CursorY);
@@ -20,7 +20,7 @@ namespace LemonUI::Screen
 		return {cursorX, cursorY};
 	}
 
-	void ToAbsolute(const float relativeX, const float relativeY, float& absoluteX, float& absoluteY)
+	void Screen::ToAbsolute(const float relativeX, const float relativeY, float& absoluteX, float& absoluteY)
 	{
 		// Get the real width based on the aspect ratio
 		const float width = 1080.0f * GetAspectRatio();
@@ -30,7 +30,7 @@ namespace LemonUI::Screen
 		absoluteY = 1080.0f * relativeY;
 	}
 
-	void ToRelative(const float absoluteX, const float absoluteY, float& relativeX, float& relativeY)
+	void Screen::ToRelative(const float absoluteX, const float absoluteY, float& relativeX, float& relativeY)
 	{
 		// Get the real width based on the aspect ratio
 		const float width = 1080.0f * GetAspectRatio();
@@ -40,26 +40,29 @@ namespace LemonUI::Screen
 		relativeY = absoluteY / 1080.0f;
 	}
 
-	bool IsCursorInArea(const PointF& pos, const SizeF& size)
+	bool Screen::IsCursorInArea(const PointF& pos, const SizeF& size)
 	{
-		IsCursorInArea(pos.GetX(), pos.GetY(), size.GetWidth(), size.GetHeight());
+		return IsCursorInArea(pos.GetX(), pos.GetY(), size.GetWidth(), size.GetHeight());
 	}
 
-	bool IsCursorInArea(float x, float y, float width, float height)
+	bool Screen::IsCursorInArea(const float x, const float y, const float width, const float height)
 	{
-		PointF cursor = GetCursorPositionRelative();
+		const PointF cursor = GetCursorPositionRelative();
 
 		float realWidth, realHeight;
 		ToRelative(width, height, realWidth, realHeight);
-		PointF realPos = GetRealPosition(x, y);
+		const PointF realPos = GetRealPosition(x, y).ToRelative();
+		const bool isX = cursor.GetX() >= realPos.GetX() && cursor.GetX() <= realPos.GetX() + realWidth;
+		const bool isY = cursor.GetY() > realPos.GetY() && cursor.GetY() < realPos.GetY() + realHeight;
+		return isX && isY;
 	}
 
-	PointF GetRealPosition(const PointF& og)
+	PointF Screen::GetRealPosition(const PointF& og)
 	{
 		return GetRealPosition(og.GetX(), og.GetY());
 	}
 
-	PointF GetRealPosition(const float x, const float y)
+	PointF Screen::GetRealPosition(const float x, const float y)
 	{
 		float relativeX, relativeY;
 		// Convert the resolution to relative
@@ -76,12 +79,12 @@ namespace LemonUI::Screen
 		return {absoluteX, absoluteY};
 	}
 
-	void ShowCursorThisFrame()
+	void Screen::ShowCursorThisFrame()
 	{
 		HUD::SET_MOUSE_CURSOR_ACTIVE_THIS_FRAME_();
 	}
 
-	void SetElementAlignment(const Alignment horizontal, const GFXAlignment vertical)
+	void Screen::SetElementAlignment(const Alignment horizontal, const GFXAlignment vertical)
 	{
 		switch (horizontal)
 		{
@@ -95,13 +98,13 @@ namespace LemonUI::Screen
 		}
 	}
 
-	void SetElementAlignment(const GFXAlignment horizontal, const GFXAlignment vertical)
+	void Screen::SetElementAlignment(const GFXAlignment horizontal, const GFXAlignment vertical)
 	{
 		GRAPHICS::SET_SCRIPT_GFX_ALIGN(horizontal, vertical);
 		GRAPHICS::SET_SCRIPT_GFX_ALIGN_PARAMS(0, 0, 0, 0);
 	}
 
-	void ResetElementAlignment()
+	void Screen::ResetElementAlignment()
 	{
 		GRAPHICS::RESET_SCRIPT_GFX_ALIGN();
 	}
