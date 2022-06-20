@@ -12,6 +12,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Color.cpp" />
+    <ClCompile Include="Controls.cpp" />
     <ClCompile Include="PointF.cpp" />
     <ClCompile Include="Screen.cpp" />
     <ClCompile Include="SizeF.cpp" />
@@ -21,6 +22,7 @@
     <ClInclude Include="Alignment.hpp" />
     <ClInclude Include="Color.hpp" />
     <ClInclude Include="Control.hpp" />
+    <ClInclude Include="Controls.h" />
     <ClInclude Include="IDrawable.hpp" />
     <ClInclude Include="IRecalculable.hpp" />
     <ClInclude Include="PointF.hpp" />
