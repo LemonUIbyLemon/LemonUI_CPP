@@ -1,5 +1,7 @@
 ﻿#include "PointF.hpp"
 
+#include "Screen.hpp"
+
 namespace LemonUI
 {
     PointF::PointF(const float x, const float y)
@@ -31,5 +33,19 @@ namespace LemonUI
     void PointF::SetY(const float y)
     {
         y_ = y;
+    }
+
+    PointF PointF::ToRelative() const
+    {
+        float relativeX, relativeY;
+        Screen::ToRelative(GetX(), GetY(), relativeX, relativeY);
+        return {relativeX, relativeY};
+    }
+
+    PointF PointF::ToAbsolute() const
+    {
+        float absoluteX, absoluteY;
+        Screen::ToAbsolute(GetX(), GetY(), absoluteX, absoluteY);
+        return {absoluteX, absoluteY};
     }
 }

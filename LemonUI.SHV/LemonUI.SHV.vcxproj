@@ -13,15 +13,18 @@
   <ItemGroup>
     <ClCompile Include="Color.cpp" />
     <ClCompile Include="PointF.cpp" />
+    <ClCompile Include="Screen.cpp" />
     <ClCompile Include="SizeF.cpp" />
     <ClCompile Include="Sound.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Alignment.hpp" />
     <ClInclude Include="Color.hpp" />
+    <ClInclude Include="Control.hpp" />
     <ClInclude Include="IDrawable.hpp" />
     <ClInclude Include="IRecalculable.hpp" />
     <ClInclude Include="PointF.hpp" />
+    <ClInclude Include="Screen.hpp" />
     <ClInclude Include="SizeF.hpp" />
     <ClInclude Include="Sound.hpp" />
   </ItemGroup>
